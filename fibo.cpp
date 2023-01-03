@@ -13,10 +13,11 @@ long int  fibonacci(int n) {
 }
 
 int main() {
-  int n;
-  cout << "Podaj n-ty wyraz ciągu Fibonacciego, który chcesz obliczyć: ";
+  int n=-1;
+  while(n<0){
+  cout << "Podaj n-ty wyraz ciągu Fibonacciego, który chcesz obliczyć(n>=0): ";
   cin >> n;
-
+  }
   cout << "Wyraz o indeksie " << n << " w ciągu Fibonacciego to " << fibonacci(n) << endl;
   cout << "Informacje dodatkowe:\n FibCalc\n Radoslaw Danielkiewicz\n I2S 2.2\n";
 
