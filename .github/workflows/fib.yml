@@ -13,7 +13,7 @@ jobs:
       #Skonfigurowanie dockera + buildx
       - name: Buildx set-up
         id: buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       #Instalacja QEMU
       - name: Docker Setup QEMU
