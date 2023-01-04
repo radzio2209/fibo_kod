@@ -65,7 +65,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            radzio2209/lab_test:${{ github.ref }}.${{ steps.metadata.outputs.tag }}
+            radzio2209/lab_test:${{ steps.metadata.outputs.tag }}
             
       #Przenies cache'a
       - name: Move cache
