@@ -42,7 +42,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.REpo_TOKEN }}
-          
+
       #Meta
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -51,6 +51,11 @@ jobs:
           images: |
             radzio2209/lab_test
             ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
       
 
       #Zbudowanie i wypchniecie obrazu na Dockerhuba
@@ -64,8 +69,8 @@ jobs:
           context: ./
           file: Dockerfile
           push: true
-          tags: |
-            radzio2209/lab_test:costam
+          tags: ${{ steps.metadata.outputs.tag }}
+          labels: ${{ steps.metadata.outputs.labels }}
             
       #Przenies cache'a
       - name: Move cache
