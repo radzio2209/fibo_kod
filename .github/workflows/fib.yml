@@ -68,8 +68,8 @@ jobs:
           platforms:  linux/amd64,linux/arm64
           context: ./
           file: Dockerfile
-          push: true
-          tags: radzio2209/lab_test:v.${{ github.ref }}.${{ steps.metadata.outputs.tag }}
+          push: ${{  github.event_name != 'pull_request'  }}
+          tags: radzio2209/lab_test:${{ github.ref }}.${{ steps.metadata.outputs.tag }}
             
       #Przenies cache'a
       - name: Move cache
